@@ -9,7 +9,7 @@ cd /mnt/c/Users/malicata/source/azure-zap
 amplifier run --bundle ./bundle.md "What agents are available?"
 ```
 
-**Expected:** Session starts, lists 5 agents available
+**Expected:** Session starts, lists 6 agents available
 
 ---
 
@@ -46,17 +46,17 @@ amplifier run --bundle /mnt/c/Users/malicata/source/azure-zap/bundle.md "Use azu
 ### Test 4: Create Simple Deployment Plan
 
 ```bash
-amplifier run --bundle /mnt/c/Users/malicata/source/azure-zap/bundle.md "Use deployment-planner to create a plan for deploying a static website to Azure Storage. Project name: test-site, environment: dev"
+amplifier run --bundle /mnt/c/Users/malicata/source/azure-zap/bundle.md "Use azure-task-planner to create a plan for deploying a static website to Azure Storage. Project name: test-site, environment: dev"
 ```
 
-**Expected:** Multi-phase deployment plan with cost estimate
+**Expected:** Multi-phase task plan with cost estimate
 
 ---
 
 ### Test 5: Validate a Plan
 
 ```bash
-amplifier run --bundle /mnt/c/Users/malicata/source/azure-zap/bundle.md "Use deployment-watchdog to validate this plan: [paste plan from Test 4]"
+amplifier run --bundle /mnt/c/Users/malicata/source/azure-zap/bundle.md "Use azure-task-watchdog to validate this plan: [paste plan from Test 4]"
 ```
 
 **Expected:** Safety validation report with APPROVED/BLOCKED verdict
@@ -76,7 +76,7 @@ If bundle fails to load, check:
 2. **Agent files exist:**
    ```bash
    ls -la agents/
-   # Should show all 5 agent .md files
+   # Should show all 6 agent .md files
    ```
 
 3. **Tool sources are accessible:**
