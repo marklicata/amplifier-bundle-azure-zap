@@ -313,6 +313,238 @@ Query logs and metrics.
 
 ---
 
+### Analytics
+
+#### Azure App Lens (`applens`)
+Diagnose and analyze application performance issues.
+
+**Common Tools:**
+- `azmcp_applens_diagnose` - Diagnose performance issues
+- `azmcp_applens_analyze` - Analyze application metrics
+
+**Use Cases:** Performance troubleshooting, diagnostics
+
+#### Azure Data Explorer (`kusto`)
+Work with Azure Data Explorer clusters, databases, tables, and queries.
+
+**Common Tools:**
+- `azmcp_kusto_cluster_create` - Create Data Explorer cluster
+- `azmcp_kusto_database_create` - Create database
+- `azmcp_kusto_query` - Execute KQL queries
+
+**Use Cases:** Big data analytics, log analytics, time-series analysis
+
+#### Azure Event Hubs (`eventhubs`)
+Manage Azure Event Hubs namespaces and event hubs.
+
+**Common Tools:**
+- `azmcp_eventhubs_namespace_create` - Create Event Hubs namespace
+- `azmcp_eventhubs_hub_create` - Create event hub
+- `azmcp_eventhubs_hub_send` - Send events
+
+**Use Cases:** Event streaming, IoT telemetry, log aggregation
+
+---
+
+### Messaging
+
+#### Azure Event Grid (`eventgrid`)
+Manage Event Grid resources, topics, and subscriptions.
+
+**Common Tools:**
+- `azmcp_eventgrid_topic_create` - Create Event Grid topic
+- `azmcp_eventgrid_subscription_create` - Create event subscription
+- `azmcp_eventgrid_publish` - Publish events
+
+**Use Cases:** Event-driven architecture, reactive systems
+
+#### Azure Service Bus (`servicebus`)
+Work with Azure Service Bus messaging services.
+
+**Common Tools:**
+- `azmcp_servicebus_namespace_create` - Create Service Bus namespace
+- `azmcp_servicebus_queue_create` - Create queue
+- `azmcp_servicebus_topic_create` - Create topic
+- `azmcp_servicebus_send` - Send message
+
+**Use Cases:** Message queuing, pub/sub patterns, reliable messaging
+
+---
+
+### Communication
+
+#### Azure Communication Services (`communication`)
+Send SMS and email messages.
+
+**Common Tools:**
+- `azmcp_communication_service_create` - Create communication service
+- `azmcp_communication_sms_send` - Send SMS message
+- `azmcp_communication_email_send` - Send email
+
+**Use Cases:** Customer notifications, alerts, communication workflows
+
+#### Azure SignalR (`signalr`)
+Manage Azure SignalR resources and runtimes.
+
+**Common Tools:**
+- `azmcp_signalr_service_create` - Create SignalR service
+- `azmcp_signalr_list` - List SignalR services
+
+**Use Cases:** Real-time web functionality, live updates
+
+---
+
+### Security (Extended)
+
+#### Azure Confidential Ledger (`confidentialledger`)
+Manage Azure Confidential Ledger resources and transactions.
+
+**Common Tools:**
+- `azmcp_confidentialledger_create` - Create confidential ledger
+- `azmcp_confidentialledger_transaction_create` - Create transaction
+
+**Use Cases:** Blockchain-like audit logs, tamper-proof records
+
+---
+
+### Storage (Extended)
+
+#### Azure File Sync (`storagesync`)
+Manage Storage Sync services and endpoints.
+
+**Common Tools:**
+- `azmcp_storagesync_service_create` - Create sync service
+- `azmcp_storagesync_group_create` - Create sync group
+- `azmcp_storagesync_endpoint_create` - Create cloud endpoint
+
+**Use Cases:** File server sync, hybrid storage
+
+#### Azure Managed Lustre (`managedlustre`)
+Manage Azure Managed Lustre file systems.
+
+**Common Tools:**
+- `azmcp_managedlustre_create` - Create Lustre file system
+- `azmcp_managedlustre_job_create` - Create import/export job
+
+**Use Cases:** High-performance computing, large-scale data processing
+
+---
+
+### Governance & Management
+
+#### Azure Cloud Architect (`cloudarchitect`)
+Design cloud systems through guided requirements gathering.
+
+**Common Tools:**
+- `azmcp_cloudarchitect_analyze` - Analyze requirements
+- `azmcp_cloudarchitect_recommend` - Recommend architecture
+
+**Use Cases:** Architecture design, solution planning
+
+#### Azure Policy (`policy`)
+Manage Azure Policy assignments and definitions.
+
+**Common Tools:**
+- `azmcp_policy_assignment_create` - Create policy assignment
+- `azmcp_policy_assignment_list` - List assignments
+- `azmcp_policy_definition_list` - List available policies
+
+**Use Cases:** Compliance enforcement, governance
+
+#### Azure Quotas (`quota`)
+Manage Azure resource quotas and limits.
+
+**Common Tools:**
+- `azmcp_quota_get` - Get quota for resource type
+- `azmcp_quota_request` - Request quota increase
+
+**Use Cases:** Capacity planning, quota management
+
+#### Azure Resource Health (`resourcehealth`)
+Check health status of Azure resources.
+
+**Common Tools:**
+- `azmcp_resourcehealth_check` - Check resource health
+- `azmcp_resourcehealth_list` - List health events
+
+**Use Cases:** Availability monitoring, incident detection
+
+---
+
+### Developer Tools (Extended)
+
+#### Azure Load Testing (`loadtesting`)
+Create, run, and view load tests.
+
+**Common Tools:**
+- `azmcp_loadtesting_test_create` - Create load test
+- `azmcp_loadtesting_test_run` - Run load test
+- `azmcp_loadtesting_results_get` - Get test results
+
+**Use Cases:** Performance testing, capacity planning
+
+#### Azure Workbooks (`workbooks`)
+Create and manage Azure Workbooks for data visualization.
+
+**Common Tools:**
+- `azmcp_workbooks_create` - Create workbook
+- `azmcp_workbooks_update` - Update workbook
+
+**Use Cases:** Custom dashboards, reporting
+
+#### Azure Managed Grafana (`grafana`)
+List and manage Grafana workspaces.
+
+**Common Tools:**
+- `azmcp_grafana_workspace_list` - List Grafana workspaces
+
+**Use Cases:** Monitoring dashboards, visualization
+
+#### Azure CLI Extensions (`extension`)
+Find Azure CLI commands and get installation instructions.
+
+**Common Tools:**
+- `azmcp_extension_cli_find` - Find Azure CLI commands
+- `azmcp_extension_azd_help` - Azure Developer CLI help
+
+**Use Cases:** CLI discovery, command reference
+
+---
+
+### Virtual Desktop Infrastructure
+
+#### Azure Virtual Desktop (`virtualdesktop`)
+Manage Azure Virtual Desktop resources.
+
+**Common Tools:**
+- `azmcp_virtualdesktop_hostpool_create` - Create host pool
+- `azmcp_virtualdesktop_sessionhost_list` - List session hosts
+
+**Use Cases:** VDI deployments, remote desktop services
+
+---
+
+### Other
+
+#### Azure Marketplace (`marketplace`)
+Discover Azure Marketplace products and offers.
+
+**Common Tools:**
+- `azmcp_marketplace_search` - Search marketplace
+- `azmcp_marketplace_product_get` - Get product details
+
+**Use Cases:** Third-party service discovery
+
+#### Azure Native ISV (`datadog`)
+Work with Azure Native ISV services (Datadog integration).
+
+**Common Tools:**
+- `azmcp_datadog_monitor_create` - Create Datadog monitor
+
+**Use Cases:** Third-party monitoring integration
+
+---
+
 ### DevOps
 
 #### Azure Bicep Schema (`bicepschema`)
@@ -360,22 +592,94 @@ All Azure MCP tools follow consistent naming:
 
 ---
 
+## Multiple Tool Options (Decision Guidance)
+
+Some tasks can be accomplished with different Azure services. When multiple options exist, present trade-offs and ask the user for their preference.
+
+### Containerized Application Hosting
+
+**Option 1: Azure App Service (Containers)**
+- **Namespace:** `appservice` + `acr`
+- **Pros:** Simple setup, managed platform, easier for developers
+- **Cons:** Less control over infrastructure
+- **Cost:** ~$50-150/month
+- **Tools:** `azmcp_appservice_webapp_create` (with container config)
+
+**Option 2: Azure Container Apps**
+- **Namespace:** `containerapp` + `acr`
+- **Pros:** Serverless containers, auto-scaling, Dapr support
+- **Cons:** Newer service, fewer enterprise features
+- **Cost:** ~$30-100/month (pay for usage)
+- **Tools:** `azmcp_containerapp_create`
+
+**Option 3: Azure Kubernetes Service (AKS)**
+- **Namespace:** `aks` + `acr`
+- **Pros:** Full control, microservices support, industry standard
+- **Cons:** Complex setup, requires k8s knowledge
+- **Cost:** ~$300-1000+/month
+- **Tools:** `azmcp_aks_cluster_create`
+
+**When to ask user:** "I can deploy your container using App Service, Container Apps, or AKS. App Service is simplest, Container Apps is serverless, AKS gives full control. Which do you prefer?"
+
+### NoSQL Database Options
+
+**Option 1: Azure Cosmos DB**
+- **Namespace:** `cosmos`
+- **Pros:** Global distribution, multiple APIs (SQL, MongoDB, Cassandra)
+- **Cons:** Higher cost, complex pricing
+- **Cost:** ~$96+/month (starts at 400 RU/s)
+- **Tools:** `azmcp_cosmos_account_create`
+
+**Option 2: Azure Table Storage**
+- **Namespace:** `storage`
+- **Pros:** Very cheap, simple key-value store
+- **Cons:** Limited query capabilities, no global distribution
+- **Cost:** ~$0.50/month
+- **Tools:** `azmcp_storage_table_create`
+
+**When to ask user:** "For NoSQL, I can use Cosmos DB (global, expensive) or Table Storage (cheap, simple). What's your preference?"
+
+### Static Website Hosting
+
+**Option 1: Azure Storage (Static Website)**
+- **Namespace:** `storage`
+- **Pros:** Cheapest option, simple setup
+- **Cons:** No built-in CI/CD, manual deployment
+- **Cost:** ~$0.50-5/month
+- **Tools:** `azmcp_storage_account_enable_static_website`
+
+**Option 2: Azure Static Web Apps**
+- **Namespace:** `staticwebapp`
+- **Pros:** Built-in CI/CD, staging environments, free SSL
+- **Cons:** Slightly more complex
+- **Cost:** Free tier available, ~$9/month for Standard
+- **Tools:** `azmcp_staticwebapp_create`
+
+**When to ask user:** "For static sites, Storage is cheapest and simplest. Static Web Apps includes CI/CD from GitHub. Which fits your workflow better?"
+
+---
+
 ## Service Selection Guide
 
 ### Static Website Hosting
 
-**Recommended Service:** Azure Storage  
-**Namespace:** `storage`  
-**Cost:** ~$0.50-5/month
+**Recommended Service:** Azure Storage OR Static Web Apps  
+**Namespaces:** `storage` or `staticwebapp`  
+**Cost:** ~$0.50-9/month
 
-**Key Tools:**
+**Storage Option (Cheapest):**
 ```
 azmcp_storage_account_create
 azmcp_storage_account_enable_static_website
 azmcp_storage_blob_upload
 ```
 
-**Alternative:** Azure Static Web Apps (if CI/CD needed)
+**Static Web Apps Option (CI/CD):**
+```
+azmcp_staticwebapp_create (auto-connects to GitHub repo)
+```
+
+**Decision criteria:** If user wants CI/CD integration, recommend Static Web Apps. Otherwise, Storage.
 
 ---
 

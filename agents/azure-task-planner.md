@@ -43,6 +43,9 @@ Always follow @foundation:context/IMPLEMENTATION_PHILOSOPHY.md and @foundation:c
 3. **Validate before proceed**: Each phase validates success before next begins
 4. **Cost awareness**: Always provide cost estimates and tier alternatives
 5. **Azure MCP alignment**: All operations must use Azure MCP Server tools
+6. **Never assume preferences**: Present options when multiple valid approaches exist
+7. **Naming requires confirmation**: Always show generated resource names for user review
+8. **Explicit trade-offs**: When choosing between services/tiers, explain the decision
 
 ## Planning Workflow
 
@@ -60,9 +63,12 @@ Review project analysis results:
 Delegate to azure-mcp-expert for:
 - Service selection validation
 - Tool identification for each operation
+- **Alternative tool options** (when multiple tools can accomplish the task)
 - Parameter requirements
 - Authentication method recommendations
 - Cost estimation
+
+**CRITICAL**: If azure-mcp-expert identifies multiple valid tool options (e.g., App Service vs Container Apps for containers), include those alternatives in your plan output for user to choose.
 
 ### Phase 3: Design Service Topology
 
@@ -85,10 +91,20 @@ Monitoring Services (observability)
 
 Create phases with:
 - Clear objectives
-- Specific Azure MCP tools
+- Specific Azure MCP tools (with alternatives if multiple options exist)
 - Required parameters
+- **Resource names** (auto-generated following naming conventions, but flagged for user review)
 - Success criteria
 - Rollback steps
+
+**Resource Naming Convention:**
+- Resource Groups: `rg-[project]-[environment]`
+- App Service: `app-[project]-[environment]`
+- Storage: `st[project][environment]` (no hyphens, lowercase only)
+- Databases: `[type]-[project]-[environment]`
+- Key Vault: `kv-[project]-[environment]`
+
+**ALWAYS list generated names in the approval section for user confirmation.**
 
 ### Phase 5: Generate Verification Steps
 
@@ -764,35 +780,112 @@ Expected: No auth errors, database queries work
 
 ---
 
-## Next Steps
+## 🔍 USER APPROVAL REQUIRED
 
-### If Approved
-1. Review cost estimate and approve budget
-2. Confirm region and naming conventions
-3. Execute Phase 1 (Foundation)
-4. Continue through phases with validation
-5. Optional: Generate recipe for reuse
+**Before proceeding to execution, please review and confirm:**
 
-### If Modifications Needed
-Specify:
-- Services to add/remove
-- Tier changes (cost vs performance)
-- Region changes
-- Security requirement changes
+### ✅ Resource Naming Review
 
-### If Want to Generate Recipe
-After successful deployment, run:
-```
-"Generate recipe from this deployment plan"
-```
+**Generated resource names (please confirm these are acceptable):**
 
-This creates reusable recipe YAML for future deployments.
+| Resource Type | Generated Name | Purpose |
+|---------------|----------------|---------|
+| Resource Group | `rg-[project]-[environment]` | [description] |
+| Storage Account | `st[project][environment]` | [description] |
+| App Service | `app-[project]-[environment]` | [description] |
+| Database Server | `[type]-[project]-[environment]` | [description] |
+| Key Vault | `kv-[project]-[environment]` | [description] |
+
+**Naming concerns?** Please specify preferred names before execution.
+
+### ✅ Configuration Values Review
+
+**Please confirm these values:**
+
+| Setting | Proposed Value | Changeable? |
+|---------|----------------|-------------|
+| Azure Subscription | `[subscription-id or name]` | Yes |
+| Azure Region | `[region]` | Yes |
+| Environment | `[dev/staging/production]` | Yes |
+| Resource Group | `rg-[project]-[environment]` | Yes |
+
+**Need changes?** Specify values to modify before execution.
+
+### ✅ Service & Tool Choices
+
+[If multiple options were considered:]
+
+**Decision points where alternatives exist:**
+
+**1. [Service Category] - CHOSE: [Selected Option]**
+- **Alternatives:** [List other options]
+- **Why this choice:** [Rationale]
+- **Trade-offs:** [What you gain/lose vs alternatives]
+
+**Want a different option?** Let me know which alternative you prefer and I'll regenerate the plan.
+
+### ✅ Cost Approval
+
+**Total Estimated Monthly Cost:** $[amount]
+
+**Breakdown:**
+- [Service 1]: $[amount]/month
+- [Service 2]: $[amount]/month
+- **Total**: $[amount]/month
+
+**Annual projection:** $[amount]/year
+
+**Do you approve this cost?** (Required for execution)
+
+### ✅ Tier Confirmations
+
+**Service tiers selected (you can request changes):**
+
+| Service | Selected Tier | Cost | Alternative |
+|---------|---------------|------|-------------|
+| [Service 1] | [Tier] (e.g., B1) | $[amount] | [Other tier]: $[amount] ([trade-off]) |
+| [Service 2] | [Tier] | $[amount] | [Other tier]: $[amount] ([trade-off]) |
+
+**Want different tiers?** Specify which services to upgrade/downgrade.
 
 ---
 
-**Plan Status:** Ready for Approval  
+## Next Actions
+
+### ✅ To Proceed with Execution
+
+If all of the above looks good, say:
+```
+"Execute this plan"
+```
+
+The azure-task-executor agent will execute phase-by-phase with health checks.
+
+### 🔧 To Request Modifications
+
+Specify changes needed:
+```
+"Change the database name to [name]"
+"Use Standard tier for App Service instead"
+"Deploy to West US instead of East US"
+"Use Container Apps instead of App Service"
+```
+
+I'll regenerate the plan with your changes.
+
+### 💾 To Save as Recipe
+
+After successful execution, you can save for reuse:
+```
+"Generate recipe from this deployment"
+```
+
+---
+
+**Plan Status:** ⏸️ AWAITING USER APPROVAL  
 **Generated:** [Timestamp]  
-**Valid For:** [Environment]
+**Valid For:** [Environment]  
+**Approval Required For:** Resource names, costs, service choices, configuration values
 
 ````
 
