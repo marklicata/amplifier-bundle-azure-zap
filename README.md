@@ -48,7 +48,7 @@ Time: 20 minutes | Cost: $75/month
 
 ```bash
 # Add azure-zap bundle to your Amplifier configuration
-amplifier bundle add azure-zap
+amplifier bundle add amplifier-bundle-azure-zap
 ```
 
 Or include in your app's bundle composition.
@@ -89,13 +89,14 @@ Creates reusable recipe YAML for future deployments.
 
 ## How It Works
 
-### The Five Agents
+### The Six Agents
 
 1. **project-analyzer** - Examines your codebase
 2. **azure-mcp-expert** - Authoritative Azure MCP consultant
-3. **deployment-planner** - Creates multi-phase plans
-4. **deployment-watchdog** - Safety and compliance validator
-5. **recipe-generator** - Converts deployments to recipes
+3. **azure-task-planner** - Creates multi-phase task plans
+4. **azure-task-watchdog** - Safety and compliance validator
+5. **azure-task-executor** - Executes plans via Azure MCP tools
+6. **recipe-generator** - Converts deployments to recipes
 
 ### The Flow
 

@@ -65,7 +65,7 @@ Azure ZAP will:
 Azure ZAP will:
 1. Analyze your project structure
 2. Consult **azure-mcp-expert** for service selection
-3. Use **deployment-planner** to create multi-phase plan
+3. Use **azure-task-planner** to create multi-phase plan
 4. Estimate time and cost
 
 ---
@@ -77,7 +77,7 @@ Azure ZAP will:
 ```
 
 Azure ZAP will:
-1. Use **deployment-watchdog** to check:
+1. Use **azure-task-watchdog** to check:
    - Cost against budget
    - Azure quota availability
    - Destructive operations
@@ -112,9 +112,9 @@ Recommendation:
 - Complexity: Simple
 ```
 
-**Step 2: Deployment Plan**
+**Step 2: Task Plan**
 ```
-Using deployment-planner to create deployment strategy...
+Using azure-task-planner to create deployment strategy...
 
 Deployment Plan: my-site
 
@@ -140,7 +140,7 @@ Total cost: ~$0.50/month
 
 **Step 3: Safety Validation**
 ```
-Using deployment-watchdog to validate...
+Using azure-task-watchdog to validate...
 
 ✅ APPROVED
 
@@ -152,7 +152,14 @@ Compliance: ✅ All checks passed
 
 **Step 4: Execute**
 ```
-Ready to execute deployment. Proceed? (yes/no)
+Using azure-task-executor to execute the approved plan...
+
+✅ Phase 1 completed (2 min)
+✅ Phase 2 completed (1 min)
+✅ Phase 3 completed (2 min)
+
+Deployment successful!
+Website URL: https://stmysitedev.z13.web.core.windows.net
 ```
 
 ---
@@ -185,9 +192,9 @@ Estimated cost: $75/month
 Complexity: Moderate
 ```
 
-**Step 2: Deployment Plan**
+**Step 2: Task Plan**
 ```
-Using deployment-planner and azure-mcp-expert...
+Using azure-task-planner and azure-mcp-expert...
 
 Deployment Plan: my-api
 
@@ -218,7 +225,7 @@ Cost: ~$75/month
 
 **Step 3: Safety Validation**
 ```
-Using deployment-watchdog...
+Using azure-task-watchdog...
 
 ✅ APPROVED WITH WARNINGS
 
@@ -241,7 +248,17 @@ Compliance:
 
 **Step 4: Execute**
 ```
-Ready to execute 5-phase deployment. Review plan and approve? (yes/no)
+Using azure-task-executor to execute 5-phase deployment...
+
+✅ Phase 1: Foundation completed (3 min)
+✅ Phase 2: Data Tier completed (8 min)
+✅ Phase 3: Compute Tier completed (7 min)
+✅ Phase 4: Monitoring completed (3 min)
+✅ Phase 5: Deploy completed (5 min)
+
+Deployment successful!
+API URL: https://app-myapi-dev.azurewebsites.net
+Database: postgres-myapi-dev.postgres.database.azure.com
 ```
 
 ---
@@ -264,18 +281,25 @@ Ready to execute 5-phase deployment. Review plan and approve? (yes/no)
 "What's the cost difference between App Service tiers?"
 ```
 
-**deployment-planner:**
+**azure-task-planner:**
 ```
-"Create deployment plan for [project]"
+"Create task plan for [project]"
 "What's the deployment strategy for this app?"
 "Show me the phases for deploying this service"
 ```
 
-**deployment-watchdog:**
+**azure-task-watchdog:**
 ```
-"Validate this deployment plan"
+"Validate this task plan"
 "Is this deployment safe?"
 "Check if I have enough quota for this deployment"
+```
+
+**azure-task-executor:**
+```
+"Execute the approved plan"
+"Deploy to Azure using the validated plan"
+"Run the deployment phases"
 ```
 
 **recipe-generator:**

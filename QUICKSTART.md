@@ -68,14 +68,14 @@ amplifier run --bundle ./bundle.md
 
 ---
 
-### Example 3: Create Deployment Plan
+### Example 3: Create Task Plan
 
 ```
-"Use deployment-planner to create a plan for deploying my Express API at ~/my-api. It needs PostgreSQL."
+"Use azure-task-planner to create a plan for deploying my Express API at ~/my-api. It needs PostgreSQL."
 ```
 
 **What happens:**
-- Creates multi-phase deployment plan
+- Creates multi-phase task plan
 - Orders service dependencies correctly
 - Defines rollback strategies
 - Provides cost breakdown
@@ -85,7 +85,7 @@ amplifier run --bundle ./bundle.md
 ### Example 4: Validate Safety
 
 ```
-"Use deployment-watchdog to validate this plan"
+"Use azure-task-watchdog to validate this plan"
 ```
 
 **What happens:**
@@ -96,14 +96,29 @@ amplifier run --bundle ./bundle.md
 
 ---
 
+### Example 5: Execute the Plan
+
+```
+"Use azure-task-executor to execute the approved plan"
+```
+
+**What happens:**
+- Executes each phase sequentially
+- Runs health checks after each phase
+- Handles secrets via Azure MCP elicitation
+- Provides detailed execution report
+- Automatically rolls back on failure
+
+---
+
 ## Next Steps
 
 After getting familiar with the agents:
 
 1. **Analyze a real project** with project-analyzer
-2. **Create a deployment plan** with deployment-planner
-3. **Validate safety** with deployment-watchdog
-4. **Execute via Azure MCP Server** (use natural language prompts with Azure MCP tools)
+2. **Create a task plan** with azure-task-planner
+3. **Validate safety** with azure-task-watchdog
+4. **Execute the plan** with azure-task-executor
 5. **Save as recipe** with recipe-generator for future reuse
 
 ---
@@ -134,16 +149,15 @@ watchdog:
 1. "Use project-analyzer on my React app at ~/my-site"
    → Returns: Recommends Azure Storage, $0.50/month
 
-2. "Use deployment-planner to create a static website deployment plan"
+2. "Use azure-task-planner to create a static website deployment plan"
    → Returns: 3-phase plan (create storage, enable hosting, upload files)
 
-3. "Use deployment-watchdog to validate the plan"
+3. "Use azure-task-watchdog to validate the plan"
    → Returns: ✅ APPROVED (cost: $0.50/month)
 
-4. Now execute via Azure MCP natural language:
-   "Create storage account 'stmysitedev' in resource group 'rg-mysite-dev' in East US"
-   "Enable static website hosting on storage account 'stmysitedev'"
-   "Upload files from ~/my-site/build to $web container in storage account 'stmysitedev'"
+4. "Use azure-task-executor to execute the approved plan"
+   → Executes: Creates storage, enables hosting, uploads files
+   → Returns: ✅ SUCCESS - Website live at https://stmysitedev.z13.web.core.windows.net
 
 5. "Use recipe-generator to save this deployment as a recipe"
    → Returns: Reusable recipe YAML

@@ -11,13 +11,16 @@ tools:
     source: git+https://github.com/microsoft/amplifier-module-tool-search@main
   - module: tool-bash
     source: git+https://github.com/microsoft/amplifier-module-tool-bash@main
+  - module: tool-mcp
+    source: git+https://github.com/microsoft/amplifier-module-tool-mcp@main
 
 agents:
   include:
     - azure-zap:project-analyzer
     - azure-zap:azure-mcp-expert
-    - azure-zap:deployment-planner
-    - azure-zap:deployment-watchdog
+    - azure-zap:azure-task-planner
+    - azure-zap:azure-task-watchdog
+    - azure-zap:azure-task-executor
     - azure-zap:recipe-generator
     - https://raw.githubusercontent.com/microsoft/amplifier-foundation/main/agents/session-analyst.md
 ---
@@ -132,14 +135,14 @@ User Request: "Deploy my website"
 └─────────────┬───────────────────────────┘
               ↓
 ┌─────────────────────────────────────────┐
-│  Deployment Planner Agent               │
+│  Azure Task Planner Agent               │
 │  - Creates multi-phase plan             │
 │  - Orders service dependencies          │
 │  - Defines rollback strategies          │
 └─────────────┬───────────────────────────┘
               ↓
 ┌─────────────────────────────────────────┐
-│  Deployment Watchdog Agent              │
+│  Azure Task Watchdog Agent              │
 │  - Validates budget compliance          │
 │  - Checks Azure quotas                  │
 │  - Detects destructive operations       │
@@ -154,7 +157,7 @@ User Request: "Deploy my website"
 └─────────────┬───────────────────────────┘
               ↓
 ┌─────────────────────────────────────────┐
-│  Execute via Azure MCP Server           │
+│  Azure Task Executor Agent              │
 │  - Phase-by-phase execution             │
 │  - Health checks after each phase       │
 │  - Rollback on failure                  │
@@ -326,19 +329,26 @@ When deploying to production:
 
 **Output:** Service recommendations, tool guidance, parameter help
 
-### deployment-planner
-**Purpose:** Create comprehensive, phased Azure deployment plans
+### azure-task-planner
+**Purpose:** Create comprehensive, phased Azure task plans (deployments, configurations, CRUD operations)
 
-**Triggers:** After project analysis, "Create deployment plan"
+**Triggers:** After project analysis, "Create deployment plan", "Plan Azure changes"
 
 **Output:** Multi-phase plan with dependencies and rollback strategies
 
-### deployment-watchdog
-**Purpose:** Safety monitor and compliance validator
+### azure-task-watchdog
+**Purpose:** Safety monitor and compliance validator for all Azure operations
 
-**Triggers:** **REQUIRED** before executing any deployment plan
+**Triggers:** **REQUIRED** before executing any Azure task plan
 
 **Output:** Validation report with APPROVED/BLOCKED verdict
+
+### azure-task-executor
+**Purpose:** Execute validated Azure task plans phase-by-phase using Azure MCP tools
+
+**Triggers:** After azure-task-watchdog approval, "Execute the plan", "Deploy to Azure"
+
+**Output:** Detailed execution report with status, resources created, and verification results
 
 ### recipe-generator
 **Purpose:** Convert successful deployments into reusable recipes
